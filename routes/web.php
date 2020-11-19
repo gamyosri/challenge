@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\homeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'homeController@index')->name('home');
+
+Route::get('/add', 'homeController@add')->name('add');
+
+Route::post('/add', 'homeController@store')->name('store');
+
+Route::get('/delete/{imageid}', 'homeController@delete');
